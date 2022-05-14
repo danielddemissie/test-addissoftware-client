@@ -32,8 +32,8 @@ export function* getAlluserSaga() {
 export function* addUserSage(action) {
   const user = action.payload;
   try {
-    const res = yield call(addUserApi, user);
-    console.log(res);
+    yield call(addUserApi, user);
+    // console.log(res);
     yield addUserOKAction(user);
   } catch (error) {
     yield console.log(error.message);
@@ -43,8 +43,8 @@ export function* addUserSage(action) {
 function* editUserSaga(action) {
   const user = action.payload;
   try {
-    const res = yield editUserApi(user);
-    console.log(res);
+    yield editUserApi(user);
+    // console.log(res);
     yield editUserOkAction();
   } catch (error) {
     yield console.log(error.message);
@@ -54,8 +54,8 @@ function* editUserSaga(action) {
 function* deleteUserSaga(action) {
   const user = action.payload;
   try {
-    const res = yield deleteUserApi(user);
-    console.log(res);
+    yield deleteUserApi(user);
+    // console.log(res);
     yield deleteUserOkAction();
   } catch (error) {
     yield console.log(error.message);
