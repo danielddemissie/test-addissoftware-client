@@ -15,7 +15,7 @@ export default function Header() {
         height={60}
       >
         <Text p={2} fontWeight="500" fontSize={35} marginLeft="40px">
-          <Link to={"/"}>Rebass</Link>
+          <Link to={"/"}>Test addissoftware</Link>
         </Text>
         <Box mx={"auto"} />
         {location.pathname !== "/add" && (
