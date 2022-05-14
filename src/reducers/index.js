@@ -26,6 +26,10 @@ export default function userReducer(state = initialState, action) {
         loading: action.loading,
       };
     case START_DELETE_USER_SAGA:
+      return {
+        ...state,
+        user: action.payload,
+      };
     case START_EDIT_USER_SAGA:
       return {
         ...state,
