@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Button } from "../Common";
-import { Box, Flex, Text } from "rebass";
+import { Box, Flex } from "rebass";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
   getToEditUserAction,
 } from "../action/actions";
 import { useSelector } from "react-redux";
+import { SpinnerCircular } from "spinners-react";
 
 export default function UserList() {
   const navigateTo = useNavigate();
@@ -37,7 +38,11 @@ export default function UserList() {
     <div>
       {loading ? (
         <Box>
-          <Text>Loading...</Text>
+          <SpinnerCircular
+            style={{
+              marginLeft: "50%",
+            }}
+          />
         </Box>
       ) : (
         <Table>

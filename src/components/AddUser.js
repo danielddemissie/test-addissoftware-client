@@ -2,19 +2,22 @@ import { Box, Flex } from "rebass";
 import { Label, Input, Radio } from "@rebass/forms";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addUserAction, editUserAction } from "../action/actions";
 import { useSelector } from "react-redux";
 import { Button } from "../Common";
+import {
+  addUserAction,
+  editUserAction,
+  getAlluserAction,
+} from "../action/actions";
 
 export default function UserAdder() {
   const navigateTo = useNavigate();
-
   const userToEdit = useSelector((state) => state.user);
-  const loading = useSelector((state) => state.loading);
+  const isEditing = useSelector((state) => state.loading);
 
   useEffect(() => {
-    loading && setUser(userToEdit);
-  }, [loading, userToEdit]);
+    isEditing && setUser(userToEdit);
+  }, [isEditing, userToEdit]);
 
   const [user, setUser] = useState({
     FirstName: "",
@@ -33,8 +36,9 @@ export default function UserAdder() {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    loading ? editUserAction(user) : addUserAction(user);
+    isEditing ? editUserAction(user) : addUserAction(user);
     navigateTo("/");
+    getAlluserAction();
   };
 
   return (
@@ -46,7 +50,7 @@ export default function UserAdder() {
             id="FirstName"
             name="FirstName"
             placeholder="FirstName"
-            required={loading ? false : true}
+            required={isEditing ? false : true}
             value={user.FirstName}
             onChange={onChangeOfForm}
           />
@@ -57,7 +61,7 @@ export default function UserAdder() {
             id="LastName"
             name="LastName"
             placeholder="LastName"
-            required={loading ? false : true}
+            required={isEditing ? false : true}
             value={user.LastName}
             onChange={onChangeOfForm}
           />
@@ -67,7 +71,7 @@ export default function UserAdder() {
           <Input
             id="Age"
             name="Age"
-            required={loading ? false : true}
+            required={isEditing ? false : true}
             value={user.Age}
             placeholder="age"
             onChange={onChangeOfForm}
@@ -80,7 +84,7 @@ export default function UserAdder() {
             id="Height"
             name="Height"
             placeholder="Height"
-            required={loading ? false : true}
+            required={isEditing ? false : true}
             value={user.Height}
             onChange={onChangeOfForm}
           />
@@ -120,7 +124,7 @@ export default function UserAdder() {
           color="#000"
           ml={10}
         >
-          {loading ? "Edit" : "Add"}
+          {isEditing ? "Edit" : "Add"}
         </Button>
       </Flex>
     </Box>
