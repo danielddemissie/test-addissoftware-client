@@ -39,6 +39,8 @@ export default function UserList() {
       {loading ? (
         <Box>
           <SpinnerCircular
+            color="#006887"
+            enabled={loading}
             style={{
               marginLeft: "50%",
             }}
