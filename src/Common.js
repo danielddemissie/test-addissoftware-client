@@ -20,12 +20,15 @@ export const Button = styled(B)`
         `};
   color: #fff;
   cursor: pointer;
+  @media (max-width: 600px) {
+    font-size: 13px;
+    padding: 2px;
+  }
 `;
 
 export const Link = styled(L)`
   text-decoration: none;
   color: #fff;
-  margin-left: 40px;
   font-weight: normal;
   font-family: monospace;
   :hover {
@@ -41,17 +44,28 @@ export const Table = styled.table`
   }
 `;
 
-export const Thead = styled.thead`
-  > tr {
-    font-size: 20px;
-    > th {
-      padding: 10px 20px;
-    }
-  }
-`;
+export const Thead = styled.thead``;
 
 export const Tbody = styled.tbody`
   > tr:nth-of-type(odd) {
     background-color: #f2f2f2;
+  }
+`;
+
+export const Tr = styled.tr`
+  font-size: 20px;
+  @media (max-width: 900px) {
+    font-size: 12px;
+  }
+`;
+
+export const Th = styled.th`
+  padding: 10px;
+  font-size: 20px;
+  color: #000;
+  opacity: 0.6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  @media (max-width: 900px) {
+    font-size: 13px;
   }
 `;

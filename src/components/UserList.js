@@ -1,4 +1,4 @@
-import { Table, Thead, Tbody, Button } from "../Common";
+import { Table, Thead, Tbody, Th, Tr, Button } from "../Common";
 import { Box, Flex } from "rebass";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -47,39 +47,51 @@ export default function UserList() {
           />
         </Box>
       ) : (
-        <Table>
-          <Thead>
-            <tr>
-              <th>FirstName</th>
-              <th>LastName</th>
-              <th>Age</th>
-              <th>Gender</th>
-              <th>Height(cm)</th>
-              <th>Actions</th>
-            </tr>
-          </Thead>
-          <Tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.FirstName}</td>
-                <td>{user.LastName}</td>
-                <td>{user.Age}</td>
-                <td>{user.Gender}</td>
-                <td>{user.Height}</td>
-                <td>
-                  <Flex>
-                    <Button primary onClick={() => onEdit(user)}>
-                      Edit
-                    </Button>
-                    <Button bgC="red" onClick={() => onDelete(user)}>
-                      Delete
-                    </Button>
-                  </Flex>
-                </td>
+        <Box width={[1 / 1, 1 / 1.03]} mx={"auto"}>
+          <Table>
+            <Thead>
+              <tr>
+                <Th>FirstName</Th>
+                <Th>LastName</Th>
+                <Th>Age</Th>
+                <Th>Gender</Th>
+                <Th>Height(cm)</Th>
+                <Th>Actions</Th>
               </tr>
-            ))}
-          </Tbody>
-        </Table>
+            </Thead>
+            <Tbody>
+              {users.map((user) => (
+                <Tr key={user._id}>
+                  <td>{user.FirstName}</td>
+                  <td>{user.LastName}</td>
+                  <td>{user.Age}</td>
+                  <td>{user.Gender}</td>
+                  <td>{user.Height}</td>
+                  <td>
+                    <Flex
+                      justifyContent={["center", "start"]}
+                      flexWrap={"wrap"}
+                      flexDirection={["column", "row"]}
+                    >
+                      <Button
+                        backgroundColor={"indigo"}
+                        onClick={() => onEdit(user)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        backgroundColor={"red"}
+                        onClick={() => onDelete(user)}
+                      >
+                        Delete
+                      </Button>
+                    </Flex>
+                  </td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </Box>
       )}
     </div>
   );
