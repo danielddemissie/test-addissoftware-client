@@ -54,6 +54,8 @@ export const Tbody = styled.tbody`
 
 export const Tr = styled.tr`
   font-size: 20px;
+  color: #000;
+  opacity: 0.8;
   @media (max-width: 900px) {
     font-size: 12px;
   }
@@ -63,7 +65,7 @@ export const Th = styled.th`
   padding: 10px;
   font-size: 20px;
   color: #000;
-  opacity: 0.6;
+  opacity: 0.85;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   @media (max-width: 900px) {
     font-size: 13px;

@@ -10,7 +10,7 @@ import store from "./store";
 function App() {
   return (
     <Router>
-      <Box width={[1 / 1.03, 1 / 1.04, 1 / 1.5]} mx={"auto"} className="App">
+      <Box width={[1 / 1.03, 1 / 1.2, 1 / 1.5]} mx={"auto"} className="App">
         <Provider store={store}>
           <NavBar />
           <Routes>
