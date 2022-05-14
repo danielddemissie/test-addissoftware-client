@@ -6,7 +6,15 @@ export default function Header() {
   const location = useLocation();
   return (
     <Box>
-      <Flex px={2} bg="#006887" height={60} alignItems="center">
+      <Flex
+        px={2}
+        bg="#006887"
+        height={80}
+        alignItems="center"
+        style={{
+          borderRadius: 5,
+        }}
+      >
         <Box>
           <Text fontSize={[20, 25, 30]} ml={[10, 40]}>
             <Link to={"/"}>Users</Link>

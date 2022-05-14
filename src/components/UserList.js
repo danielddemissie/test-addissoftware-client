@@ -10,6 +10,7 @@ import {
 } from "../action/actions";
 import { useSelector } from "react-redux";
 import { SpinnerCircular } from "spinners-react";
+import { capitalizeName } from "../config";
 
 export default function UserList() {
   const navigateTo = useNavigate();
@@ -62,8 +63,8 @@ export default function UserList() {
             <Tbody>
               {users.map((user) => (
                 <Tr key={user._id}>
-                  <td>{user.FirstName}</td>
-                  <td>{user.LastName}</td>
+                  <td>{capitalizeName(user.FirstName)}</td>
+                  <td>{capitalizeName(user.LastName)}</td>
                   <td>{user.Age}</td>
                   <td>{user.Gender}</td>
                   <td>{user.Height}</td>
