@@ -37,10 +37,13 @@ export const Link = styled(L)`
 `;
 
 export const Table = styled.table`
+  display: block;
   min-width: fit-content;
+  max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
   width: 100%;
+  margin: 0 auto;
   margin-top: 10px;
   td {
     padding-left: 10px;
