@@ -1,22 +1,22 @@
-import { Table, Thead, Tbody, Th, Tr, Button } from "../Common";
-import { Box, Flex } from "rebass";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Table, Thead, Tbody, Th, Tr, Button } from '../Common';
+import { Box, Flex } from 'rebass';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   deleteUserAction,
   getAlluserAction,
   getToDeleteUserAction,
   getToEditUserAction,
-} from "../action/actions";
-import { useSelector } from "react-redux";
-import { SpinnerCircular } from "spinners-react";
-import { capitalizeName } from "../config";
+} from '../action/actions';
+import { useSelector } from 'react-redux';
+import { SpinnerCircular } from 'spinners-react';
+import { capitalizeName } from '../config';
 
 export default function UserList() {
   const navigateTo = useNavigate();
 
   const onEdit = (user) => {
-    navigateTo("/add");
+    navigateTo('/add');
     getToEditUserAction(user);
   };
   const onDelete = (user) => {
@@ -43,12 +43,18 @@ export default function UserList() {
             color="#006887"
             enabled={loading}
             style={{
-              marginLeft: "50%",
+              marginLeft: '50%',
             }}
           />
         </Box>
       ) : (
-        <Box width={[1 / 1, 1 / 1.03]} mx={"auto"}>
+        <Box
+          width={[1 / 1, 1 / 1.03]}
+          mx={'auto'}
+          style={{
+            overflowX: 'auto',
+          }}
+        >
           <Table>
             <Thead>
               <tr>
@@ -70,18 +76,18 @@ export default function UserList() {
                   <td>{user.Height}</td>
                   <td>
                     <Flex
-                      justifyContent={["center", "start"]}
-                      flexWrap={"wrap"}
-                      flexDirection={["column", "row"]}
+                      justifyContent={['center', 'start']}
+                      flexWrap={'wrap'}
+                      flexDirection={['column', 'row']}
                     >
                       <Button
-                        backgroundColor={"indigo"}
+                        backgroundColor={'indigo'}
                         onClick={() => onEdit(user)}
                       >
                         Edit
                       </Button>
                       <Button
-                        backgroundColor={"red"}
+                        backgroundColor={'red'}
                         onClick={() => onDelete(user)}
                       >
                         Delete
