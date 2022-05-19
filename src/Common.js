@@ -1,7 +1,7 @@
-import { Button as B } from "rebass";
-import { Link as L } from "react-router-dom";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { Button as B } from 'rebass';
+import { Link as L } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 export const Button = styled(B)`
   ${(props) =>
@@ -37,6 +37,9 @@ export const Link = styled(L)`
 `;
 
 export const Table = styled.table`
+  min-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
   width: 100%;
   margin-top: 10px;
   td {
@@ -66,7 +69,7 @@ export const Th = styled.th`
   font-size: 20px;
   color: #000;
   opacity: 0.85;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   @media (max-width: 900px) {
     font-size: 13px;
   }
