@@ -1,11 +1,11 @@
-import axiosClient from "../config";
+import axiosClient from '../config';
 
 export function getAlluserApi() {
-  return axiosClient.get("user/all");
+  return axiosClient.get('user/all');
 }
 
 export function addUserApi(user) {
-  return axiosClient.post("/user/add", { ...user });
+  return axiosClient.post('/user/add', { ...user });
 }
 
 export function editUserApi(user) {

@@ -1,16 +1,16 @@
-import { Box, Flex } from "rebass";
-import { Label, Input, Radio } from "@rebass/forms";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Button } from "../Common";
+import { Box, Flex, Text } from 'rebass';
+import { Label, Input, Radio } from '@rebass/forms';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Button } from './Common';
 import {
   addUserAction,
   editUserAction,
   getAlluserAction,
-} from "../action/actions";
+} from '../action/actions';
 
-export default function UserAdder() {
+export default function UserAdder({ title, action }) {
   const navigateTo = useNavigate();
   const userToEdit = useSelector((state) => state.user);
   const isEditing = useSelector((state) => state.loading);
@@ -20,11 +20,11 @@ export default function UserAdder() {
   }, [isEditing, userToEdit]);
 
   const [user, setUser] = useState({
-    FirstName: "",
-    LastName: "",
-    Age: "",
-    Gender: "",
-    Height: "",
+    FirstName: '',
+    LastName: '',
+    Age: '',
+    Gender: '',
+    Height: '',
   });
 
   const onChangeOfForm = (e) => {
@@ -37,15 +37,26 @@ export default function UserAdder() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     isEditing ? editUserAction(user) : addUserAction(user);
-    navigateTo("/");
+    navigateTo('/');
     getAlluserAction();
   };
 
+  const onCancleHandler = (e) => {
+    e.preventDefault();
+    navigateTo('/');
+  };
+
   return (
-    <Box as="form" onSubmit={onSubmitHandler} py={3}>
-      <Flex flexWrap={"wrap"} flexDirection="column" width={[1, 1 / 2]}>
-        <Box px={2}>
-          <Label htmlFor="name">FirstName</Label>
+    <Box as="form" onSubmit={onSubmitHandler} py={3} px={3}>
+      <Text fontSize={[15, 20, 25]} mx={10} my={10}>
+        {' '}
+        {title}
+      </Text>
+      <Flex flexWrap={'wrap'} flexDirection="column" width={[1, 1 / 2]}>
+        <Box px={2} py={1}>
+          <Label py={2} htmlFor="name">
+            FirstName
+          </Label>
           <Input
             id="FirstName"
             name="FirstName"
@@ -55,8 +66,10 @@ export default function UserAdder() {
             onChange={onChangeOfForm}
           />
         </Box>
-        <Box px={2}>
-          <Label htmlFor="name">LastName</Label>
+        <Box px={2} py={1}>
+          <Label py={2} htmlFor="name">
+            LastName
+          </Label>
           <Input
             id="LastName"
             name="LastName"
@@ -66,8 +79,10 @@ export default function UserAdder() {
             onChange={onChangeOfForm}
           />
         </Box>
-        <Box px={2}>
-          <Label htmlFor="name">Age</Label>
+        <Box px={2} py={1}>
+          <Label py={2} htmlFor="name">
+            Age
+          </Label>
           <Input
             id="Age"
             name="Age"
@@ -78,8 +93,10 @@ export default function UserAdder() {
           />
         </Box>
 
-        <Box px={2}>
-          <Label htmlFor="name">Height</Label>
+        <Box px={2} py={1}>
+          <Label py={2} htmlFor="name">
+            Height
+          </Label>
           <Input
             id="Height"
             name="Height"
@@ -90,7 +107,7 @@ export default function UserAdder() {
           />
         </Box>
       </Flex>
-      <Flex mx={1} flexWrap="wrap" flexDirection={"column"}>
+      <Flex mx={1} flexWrap="wrap" flexDirection={'column'}>
         <Label p={2}>Gender</Label>
         <Flex>
           <Label width={[1 / 2, 1 / 4]} p={2}>
@@ -99,7 +116,7 @@ export default function UserAdder() {
               name="Male"
               value={user.Gender}
               onChange={(e) => {
-                setUser({ ...user, Gender: "Male" });
+                setUser({ ...user, Gender: 'Male' });
               }}
             />
             Male
@@ -110,22 +127,35 @@ export default function UserAdder() {
               name="Male"
               value={user.Gender}
               onChange={(e) => {
-                setUser({ ...user, Gender: "Female" });
+                setUser({ ...user, Gender: 'Female' });
               }}
             />
             Female
           </Label>
         </Flex>
-        <Button
-          primary
-          width={1 / 8}
-          height={"100%"}
-          padding={10}
-          color="#000"
-          ml={10}
-        >
-          {isEditing ? "Edit" : "Add"}
-        </Button>
+        <Flex>
+          <Button
+            primary
+            width={1 / 8}
+            height={'100%'}
+            padding={10}
+            color="#000"
+            ml={10}
+          >
+            {action}
+          </Button>
+          <Button
+            backgroundColor={'#000'}
+            width={1 / 8}
+            height={'100%'}
+            padding={10}
+            color="#000"
+            ml={10}
+            onClick={onCancleHandler}
+          >
+            Cancel
+          </Button>
+        </Flex>
       </Flex>
     </Box>
   );
